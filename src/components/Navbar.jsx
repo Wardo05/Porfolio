@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState } from 'react'
+import { Menu, X } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
-  ];
+  ]
 
   return (
     <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
@@ -35,6 +35,14 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
+
+              {/* Contact route */}
+              <Link
+                to="/contact"
+                className="text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium"
+              >
+                Contact
+              </Link>
             </div>
           </div>
 
@@ -64,9 +72,18 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
+
+            {/* Mobile Contact */}
+            <Link
+              to="/contact"
+              className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-200"
+              onClick={() => setIsOpen(false)}
+            >
+              Contact
+            </Link>
           </div>
         </div>
       )}
     </nav>
-  );
+  )
 }
